@@ -48,24 +48,25 @@ ul {
 
 li {
   display: flex;
-
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   background-color: #15101c;
   color: #9e78cf;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
+
   position: relative;
 }
 
-li img {
+li div img {
   cursor: pointer;
   margin-left: 10px;
   /* margin-right: 10px; */
   /* border: 1px solid red; */
-  position: absolute;
-  right: 10px;
+  /* position: absolute;
+  right: 10px; */
+
   width: 28px;
   height: 28px;
   display: inline-block;

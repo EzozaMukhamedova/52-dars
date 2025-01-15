@@ -30,6 +30,8 @@ qoshish.addEventListener("click", () => {
     taskText.textContent = taskValue;
     li.appendChild(taskText);
 
+    let div = document.createElement("div");
+
     let doneImg = document.createElement("img");
     doneImg.src = "./images/true.svg";
     doneImg.alt = "Done";
@@ -46,19 +48,26 @@ qoshish.addEventListener("click", () => {
     });
 
     deleteImg.addEventListener("click", () => {
-      doneList.appendChild(li);
-      li.removeChild(doneImg);
-      li.appendChild(doneImg);
+      if (deleteImg.parentElement.parentElement.parentElement.id == "todo") {
+        doneList.appendChild(li);
+        div.removeChild(doneImg);
+        // div.appendChild(doneImg);
 
-      deletedTasksCount++;
-      doneCount.textContent = deletedTasksCount;
+        deletedTasksCount++;
+        doneCount.textContent = deletedTasksCount;
 
-      let currentCount = parseInt(taskCount.textContent);
-      taskCount.textContent = currentCount - 1;
+        let currentCount = parseInt(taskCount.textContent);
+        taskCount.textContent = currentCount - 1;
+      } else {
+        doneList.removeChild(li);
+
+        deletedTasksCount--;
+        doneCount.textContent = deletedTasksCount;
+      }
     });
-
-    li.appendChild(doneImg);
-    li.appendChild(deleteImg);
+    div.appendChild(deleteImg);
+    div.appendChild(doneImg);
+    li.appendChild(div);
 
     list.appendChild(li);
     input.value = "";
